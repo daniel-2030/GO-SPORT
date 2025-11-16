@@ -1,0 +1,120 @@
+    <x-app-layout>
+<br>
+<br>
+<br>
+<br>
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="py-8">
+                        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+                            <div class="bg-white p-6 shadow sm:rounded-lg">
+                        <div class="flex items-center justify-center gap-4">
+                        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+                            {{ __('Crear Usuarios') }}
+                        </h2>
+                    </div>
+
+                                {{-- FORMULARIO --}}
+                                <form action="{{ route('usuarios.store') }}" method="POST" class="space-y-6">
+                                    @csrf
+
+                                    {{-- Nombre --}}
+                                    <div>
+                                        <label for="nombre" class="block font-medium">Nombre</label>
+                                        <input type="text" name="nombre" id="nombre" 
+                                            value="{{ old('nombre') }}"
+                                            class="w-full border rounded px-3 py-2">
+                                        @error('nombre')
+                                            <span class="text-red-600 text-sm">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    {{-- apellido --}}
+                                    <div>
+                                        <label for="apellido" class="block font-medium">apellido</label>
+                                        <input type="text" name="apellido" id="apellido" 
+                                            value="{{ old('apellido') }}"
+                                            class="w-full border rounded px-3 py-2">
+                                        @error('apellido')
+                                            <span class="text-red-600 text-sm">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    {{-- Correo --}}
+                                    <div>
+                                        <label for="email" class="block font-medium">Correo</label>
+                                        <input type="email" name="email" id="email" 
+                                            value="{{ old('email') }}"
+                                            class="w-full border rounded px-3 py-2">
+                                        @error('email')
+                                            <span class="text-red-600 text-sm">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    {{-- Contraseña --}}
+                                    <div>
+                                        <label for="password" class="block font-medium">Contraseña</label>
+                                        <input type="password" name="password" id="password" 
+                                            class="w-full border rounded px-3 py-2">
+                                        @error('password')
+                                            <span class="text-red-600 text-sm">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    {{-- Teléfono --}}
+                                    <div>
+                                        <label for="telefono" class="block font-medium">Teléfono</label>
+                                        <input type="text" name="telefono" maxlength="10" pattern="[0-9]{6,10}" id="telefono" 
+                                            value="{{ old('telefono') }}"
+                                            class="w-full border rounded px-3 py-2">
+                                        @error('telefono')
+                                            <span class="text-red-600 text-sm">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+
+                                    {{-- BOTONES --}}
+                                    <div class="pt-4 flex gap-3">                                    
+                                        <button type="submit" 
+                                            class="px-4 py-2 border rounded bg-gray-400 text-white hover:bg-gray-500">
+                                            Guardar
+                                        </button>
+
+                                        <a href="{{ route('usuarios.index') }}"
+                                            class="px-4 py-2 border rounded bg-gray-400 text-white hover:bg-gray-500">
+                                            Cancelar
+                                        </a>
+                                    </div>
+                                </form>
+                                {{-- FIN FORMULARIO --}}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <style>
+    body .input {
+        background-color: #32373dff !important; /* negro absoluto */
+        color: white; /* texto blanco para contraste */
+    }
+    
+    img{
+        width: 50px;
+        height: 50px;
+    }
+    /* Opcional: Cambiar fondo de los contenedores a negro */
+    .bg-white {
+        background-color: #32373dff !important;
+        color: white;
+    }
+    input{
+        color: black;
+    }
+
+    .text-gray-800 {
+        color: #fff !important;
+    }
+</style>
+    </x-app-layout>
